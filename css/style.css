@@ -1,1 +1,369 @@
+/*==============================
+    OMALI - Sistema de Pedidos
+===============================*/
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    color:#333;
+}
+
+/*==============================
+        HEADER
+===============================*/
+
+header{
+    width:100%;
+    background:#1565c0;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+header h1{
+    font-size:34px;
+}
+
+header h2{
+    font-size:18px;
+    font-weight:normal;
+    margin-top:5px;
+}
+
+.fecha{
+    text-align:right;
+    font-size:18px;
+}
+
+.fecha span{
+    display:block;
+}
+
+/*==============================
+        TARJETAS
+===============================*/
+
+.contenedorCards{
+
+    width:95%;
+    margin:25px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:18px;
+
+}
+
+.card{
+
+    border-radius:15px;
+
+    padding:20px;
+
+    color:white;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 8px 15px rgba(0,0,0,.15);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h3{
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+.card h1{
+
+    font-size:42px;
+
+}
+
+/* Colores */
+
+.entregado{
+
+    background:#2e7d32;
+
+}
+
+.recibido{
+
+    background:#1976d2;
+
+}
+
+.llenado{
+
+    background:#f9a825;
+
+    color:#222;
+
+}
+
+.listo{
+
+    background:#7b1fa2;
+
+}
+
+.ruta{
+
+    background:#ef6c00;
+
+}
+
+.cobrado{
+
+    background:#00897b;
+
+}
+
+.cancelado{
+
+    background:#c62828;
+
+}
+
+/*==============================
+        BUSCADOR
+===============================*/
+
+.busqueda{
+
+    width:95%;
+
+    margin:20px auto;
+
+}
+
+.busqueda input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    outline:none;
+
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
+
+}
+
+/*==============================
+        TABLA
+===============================*/
+
+.tabla{
+
+    width:95%;
+
+    margin:auto;
+
+    overflow:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
+
+}
+
+thead{
+
+    background:#1565c0;
+
+    color:white;
+
+}
+
+th{
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:15px;
+
+}
+
+td{
+
+    padding:14px;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+
+}
+
+tbody tr:hover{
+
+    background:#f5f5f5;
+
+}
+
+/*==============================
+        ESTADOS
+===============================*/
+
+.estado{
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+    font-size:13px;
+
+}
+
+.estado.entregado{
+
+    background:#2e7d32;
+
+}
+
+.estado.recibido{
+
+    background:#1976d2;
+
+}
+
+.estado.llenado{
+
+    background:#f9a825;
+    color:black;
+
+}
+
+.estado.listo{
+
+    background:#7b1fa2;
+
+}
+
+.estado.ruta{
+
+    background:#ef6c00;
+
+}
+
+.estado.cobrado{
+
+    background:#00897b;
+
+}
+
+.estado.cancelado{
+
+    background:#c62828;
+
+}
+
+/*==============================
+        FOOTER
+===============================*/
+
+footer{
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:30px;
+
+    color:#666;
+
+}
+
+/*==============================
+        RESPONSIVE
+===============================*/
+
+@media(max-width:768px){
+
+header{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.fecha{
+
+    margin-top:15px;
+
+    text-align:center;
+
+}
+
+header h1{
+
+    font-size:28px;
+
+}
+
+header h2{
+
+    font-size:16px;
+
+}
+
+table{
+
+    font-size:13px;
+
+}
+
+th,td{
+
+    padding:10px;
+
+}
+
+}
