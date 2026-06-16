@@ -1,102 +1,79 @@
-//=========================================
+// =========================================
 // OMALI - Sistema de Pedidos
-//=========================================
+// =========================================
 
-// ID de tu Google Sheets
 const SHEET_ID = "11EafCgGldYFmfDklcF5JQl5jAf0Gk-ovK8az1jgwYzE";
 
-// Variables globales
-let pedidos = [];
-let clientes = [];
-let pedidosCompletos = [];
-
-//-----------------------------------------
-// Iniciar aplicación
-//-----------------------------------------
-
 google.charts.load("current");
-
 google.charts.setOnLoadCallback(iniciar);
 
-async function iniciar(){
+async function iniciar() {
 
-    actualizarFechaHora();
+    mostrarFechaHora();
 
-    setInterval(actualizarFechaHora,1000);
+    try {
 
-    await cargarDatos();
+        const pedidos = await leerHoja("Pedidos");
+        const clientes = await leerHoja("Clientes");
 
-}
+        console.log("PEDIDOS", pedidos);
+        console.log("CLIENTES", clientes);
 
-//-----------------------------------------
-// Fecha y hora
-//-----------------------------------------
+        alert("Pedidos: " + pedidos.length + "\nClientes: " + clientes.length);
 
-function actualizarFechaHora(){
+    } catch (error) {
 
-    const ahora = new Date();
+        console.error(error);
+        alert("Error leyendo Google Sheets");
 
-    document.getElementById("fecha").innerHTML =
-        ahora.toLocaleDateString("es-MX");
-
-    document.getElementById("hora").innerHTML =
-        ahora.toLocaleTimeString("es-MX");
+    }
 
 }
 
-//-----------------------------------------
-// Cargar información
-//-----------------------------------------
+function mostrarFechaHora() {
 
-async function cargarDatos(){
+    setInterval(() => {
 
-    pedidos = await leerHoja("Pedidos");
+        const ahora = new Date();
 
-    clientes = await leerHoja("Clientes");
+        document.getElementById("fecha").textContent =
+            ahora.toLocaleDateString("es-MX");
 
-    console.log("Pedidos:", pedidos);
+        document.getElementById("hora").textContent =
+            ahora.toLocaleTimeString("es-MX");
 
-    console.log("Clientes:", clientes);
+    }, 1000);
 
 }
-//-----------------------------------------
-// Leer Google Sheets
-//-----------------------------------------
 
-async function leerHoja(nombreHoja){
+async function leerHoja(nombre) {
 
     const url =
-`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(nombreHoja)}`;
+        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${nombre}`;
 
     const respuesta = await fetch(url);
 
     const texto = await respuesta.text();
 
     const json = JSON.parse(
-
-        texto.substring(47).slice(0,-2)
-
+        texto.substring(47).slice(0, -2)
     );
 
     return convertir(json.table);
 
 }
 
-//-----------------------------------------
-// Convertir datos
-//-----------------------------------------
+function convertir(tabla) {
 
-function convertir(tabla){
+    const columnas = tabla.cols.map(col => col.label);
 
-    const columnas = tabla.cols.map(c=>c.label);
+    return tabla.rows.map(fila => {
 
-    return tabla.rows.map(fila=>{
+        let objeto = {};
 
-        let objeto={};
+        fila.c.forEach((celda, i) => {
 
-        fila.c.forEach((celda,i)=>{
-
-            objeto[columnas[i]] = celda ? celda.v : "";
+            objeto[columnas[i]] = celda ? (celda.f || celda.v) : "";
 
         });
 
