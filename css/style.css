@@ -1,105 +1,128 @@
-/*==============================
-    OMALI - Sistema de Pedidos
-===============================*/
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
+/*====================================
+    OMALI ERP
+    Sistema Inteligente de Agua
+=====================================*/
 
 body{
-    background:#eef2f7;
-    color:#333;
+    background:#f4f7fb;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 }
 
-/*==============================
-        HEADER
-===============================*/
+/*==========================
+        LOGIN
+===========================*/
 
-header{
-    width:100%;
-    background:#1565c0;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 40px;
-    box-shadow:0 3px 10px rgba(0,0,0,.15);
+#login{
+    background:linear-gradient(135deg,#0d6efd,#4dabf7);
 }
 
-header h1{
-    font-size:34px;
+.login-card{
+
+    width:420px;
+
+    border:none;
+
+    border-radius:20px;
+
 }
 
-header h2{
+.login-card h2{
+
+    color:#0d6efd;
+
+    font-weight:bold;
+
+}
+
+.login-card input{
+
+    height:48px;
+
+    border-radius:10px;
+
+}
+
+.login-card button{
+
+    height:48px;
+
+    border-radius:10px;
+
     font-size:18px;
-    font-weight:normal;
-    margin-top:5px;
-}
-
-.fecha{
-    text-align:right;
-    font-size:18px;
-}
-
-.fecha span{
-    display:block;
-}
-
-/*==============================
-        TARJETAS
-===============================*/
-
-.contenedorCards{
-
-    width:95%;
-    margin:25px auto;
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
-    gap:18px;
 
 }
 
-.card{
+/*==========================
+        NAVBAR
+===========================*/
 
-    border-radius:15px;
+.navbar{
 
-    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
 
-    color:white;
+}
 
-    text-align:center;
+/*==========================
+        MENU
+===========================*/
 
-    cursor:pointer;
+.menu{
+
+    min-height:100vh;
+
+    border-right:1px solid #ddd;
+
+}
+
+.list-group-item{
+
+    border:none;
+
+    margin-bottom:5px;
+
+    border-radius:10px !important;
 
     transition:.3s;
 
-    box-shadow:0 8px 15px rgba(0,0,0,.15);
+}
+
+.list-group-item:hover{
+
+    transform:translateX(5px);
 
 }
 
-.card:hover{
+/*==========================
+        CONTENIDO
+===========================*/
 
-    transform:translateY(-8px);
+#contenido{
 
-}
-
-.card h3{
-
-    font-size:18px;
-
-    margin-bottom:15px;
+    min-height:600px;
 
 }
 
-.card h1{
+/*==========================
+        TARJETAS
+===========================*/
 
-    font-size:42px;
+.cardEstado{
+
+    border:none;
+
+    border-radius:15px;
+
+    color:white;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+.cardEstado:hover{
+
+    transform:translateY(-5px);
 
 }
 
@@ -107,19 +130,19 @@ header h2{
 
 .entregado{
 
-    background:#2e7d32;
+    background:#198754;
 
 }
 
 .recibido{
 
-    background:#1976d2;
+    background:#0d6efd;
 
 }
 
 .llenado{
 
-    background:#f9a825;
+    background:#ffc107;
 
     color:#222;
 
@@ -127,242 +150,81 @@ header h2{
 
 .listo{
 
-    background:#7b1fa2;
+    background:#6f42c1;
 
 }
 
 .ruta{
 
-    background:#ef6c00;
+    background:#fd7e14;
 
 }
 
 .cobrado{
 
-    background:#00897b;
+    background:#20c997;
 
 }
 
 .cancelado{
 
-    background:#c62828;
+    background:#dc3545;
 
 }
 
-/*==============================
-        BUSCADOR
-===============================*/
+/*==========================
+        TABLAS
+===========================*/
 
-.busqueda{
-
-    width:95%;
-
-    margin:20px auto;
-
-}
-
-.busqueda input{
-
-    width:100%;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-size:17px;
-
-    outline:none;
-
-    box-shadow:0 3px 8px rgba(0,0,0,.12);
-
-}
-
-/*==============================
-        TABLA
-===============================*/
-
-.tabla{
-
-    width:95%;
-
-    margin:auto;
-
-    overflow:auto;
-
-}
-
-table{
-
-    width:100%;
-
-    border-collapse:collapse;
+.table{
 
     background:white;
 
-    border-radius:12px;
+    border-radius:15px;
 
     overflow:hidden;
 
-    box-shadow:0 5px 12px rgba(0,0,0,.15);
-
 }
 
-thead{
+.table thead{
 
-    background:#1565c0;
+    background:#0d6efd;
 
     color:white;
 
 }
 
-th{
+.table tbody tr:hover{
 
-    padding:15px;
-
-    text-align:left;
-
-    font-size:15px;
+    background:#f3f8ff;
 
 }
 
-td{
+/*==========================
+        BOTONES
+===========================*/
 
-    padding:14px;
+.btn{
 
-    border-bottom:1px solid #eee;
-
-    font-size:14px;
-
-}
-
-tbody tr:hover{
-
-    background:#f5f5f5;
+    border-radius:10px;
 
 }
 
-/*==============================
-        ESTADOS
-===============================*/
-
-.estado{
-
-    color:white;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    font-weight:bold;
-
-    font-size:13px;
-
-}
-
-.estado.entregado{
-
-    background:#2e7d32;
-
-}
-
-.estado.recibido{
-
-    background:#1976d2;
-
-}
-
-.estado.llenado{
-
-    background:#f9a825;
-    color:black;
-
-}
-
-.estado.listo{
-
-    background:#7b1fa2;
-
-}
-
-.estado.ruta{
-
-    background:#ef6c00;
-
-}
-
-.estado.cobrado{
-
-    background:#00897b;
-
-}
-
-.estado.cancelado{
-
-    background:#c62828;
-
-}
-
-/*==============================
-        FOOTER
-===============================*/
-
-footer{
-
-    text-align:center;
-
-    padding:20px;
-
-    margin-top:30px;
-
-    color:#666;
-
-}
-
-/*==============================
+/*==========================
         RESPONSIVE
-===============================*/
+===========================*/
 
 @media(max-width:768px){
 
-header{
+.menu{
 
-    flex-direction:column;
-
-    text-align:center;
+    min-height:auto;
 
 }
 
-.fecha{
+.login-card{
 
-    margin-top:15px;
-
-    text-align:center;
-
-}
-
-header h1{
-
-    font-size:28px;
-
-}
-
-header h2{
-
-    font-size:16px;
-
-}
-
-table{
-
-    font-size:13px;
-
-}
-
-th,td{
-
-    padding:10px;
+    width:95%;
 
 }
 
